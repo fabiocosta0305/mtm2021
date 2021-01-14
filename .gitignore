@@ -1,2 +1,3 @@
 .history/*
 artifacts/*
+__pycache__/*
