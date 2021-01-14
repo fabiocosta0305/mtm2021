@@ -1,6 +1,7 @@
 import ansible_runner, os, json   
+import data_transfer_pg as db
 
-r = ansible_runner.run(private_data_dir=".", playbook="rexx_tso.yml")
+r = ansible_runner.run(private_data_dir=".", playbook="rexx_tso.yml", quiet=True)
 
 datafile = open("mainframe.data")
 
@@ -14,7 +15,7 @@ tsos=dict()
 for job in secondary['content']:
     jobinfo=job.split()
     jobname=jobinfo[0].replace('*','')
-    print(jobname)
+    # print(jobname)
     if jobinfo[1]=='STC':
         if jobname not in jobs:
             jobdata=[0,0,0,0]
@@ -37,4 +38,5 @@ for job in secondary['content']:
         tsos[jobname][3]+=float(jobinfo[5])
 
 data = { 'TSU': tsos, 'STC': jobs }
-print(json.dumps(data))
+#print(json.dumps(data))
+db.import_data(data)

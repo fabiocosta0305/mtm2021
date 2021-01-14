@@ -19,4 +19,4 @@
   
 ### Usage
 
-By running this script, you'll have a list of data that can by inserted on any metric collector or RDBMS as a JSON object.
+By running this script, you'll have a list of data that can by inserted on any metric collector or RDBMS as a JSON object.      
