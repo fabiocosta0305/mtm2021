@@ -1,0 +1,22 @@
+---
+- hosts: mtm
+  gather_facts: yes
+  environment:
+    "{{default_environment}}"
+
+  collections:
+    - ibm.ibm_zos_core
+
+  tasks:
+    - name: Running REXX
+      zos_tso_command:
+        commands:
+          -  exec 'z01173.GCHA(SDSFRET)' # change for the correct one on your system
+      register: content
+    
+    - name: Results
+      debug:
+        msg: "{{ content.output }}"
+    
+    - local_action: copy content={{ content.output }} dest=mainframe.data
+

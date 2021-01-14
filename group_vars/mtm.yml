@@ -1,0 +1,21 @@
+---
+ansible_port: 22                                # SSH Port
+ansible_user: z01173                              # USER used for deploy
+ansible_password: blast78              # USER used for deploy
+# ansible_ssh_pipelining: True                    # needed for encoding on ssh connections
+# System Related Variables
+zoau_home: /z/python/zoau-v1.0.3                 # Path for your ZOAU directory
+python_path: /z/python/usr/lpp/IBM/cyp/v3r8/pyz  # Path for your Python
+ansible_python_interpreter: "{{python_path}}/bin/python3"
+_TAG_REDIR_ERR: txt
+_TAG_REDIR_IN: txt
+_TAG_REDIR_OUT: txt
+tgt_tmp_dir: "/tmp"
+ctl_tmp_dir: "/tmp"
+default_environment:
+  ZOAU_ROOT: "{{zoau_home}}"    
+  ZOAU_HOME: "{{zoau_home}}" 
+  PATH: "{{zoau_home}}/bin:{{python_path}}/bin:/bin:."
+  LIBPATH: "{{zoau_home}}/lib:{{python_path}}/lib:/lib:/usr/lib:."
+  PYTHONPATH: "{{zoau_home}}/lib"
+  _BPXK_AUTOCVT: "ON"
