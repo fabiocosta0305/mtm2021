@@ -4,13 +4,14 @@ from psycopg2 import Error
 def insert_data(connection, type, data_json):
     thistime=datetime.datetime.now().timestamp()
     sql="INSERT INTO METRICS VALUES (%s, %s, %s, %s, %s, %s, current_timestamp)"
+    cursor=connection.cursor()
     for i in data_json.keys():
         insert_data=(type, i, data_json[i][0], 
                         data_json[i][1], 
                         data_json[i][2], 
                         data_json[i][3])
         cursor.execute(sql,insert_data)
-        connection.commit()
+    connection.commit()
     # print(type, data_json)
     # pass
 
