@@ -1,0 +1,24 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "148.100.76.61",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Grafana (Admin)",
+            "database": "grafana",
+            "username": "fecosta",
+            "password": "m1ck3y!!"
+        },
+        {
+            "previewLimit": 50,
+            "server": "148.100.76.61",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Grafana (user)",
+            "database": "grafana",
+            "username": "grafana",
+            "password": "grafana"
+        }
+    ]
+}
