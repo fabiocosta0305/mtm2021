@@ -5,7 +5,7 @@
 DROP TABLE public.metrics;
 
 CREATE TABLE public.metrics (
-	registered_at timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	registered_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	jobname varchar(10) NOT NULL,
 	jobtype varchar(3) NOT NULL,
     metric varchar(15) NOT NULL,
