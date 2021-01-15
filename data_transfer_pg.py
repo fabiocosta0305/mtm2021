@@ -3,13 +3,16 @@ from psycopg2 import Error
 
 def insert_data(connection, type, data_json):
     thistime=datetime.datetime.now().timestamp()
-    sql="INSERT INTO METRICS VALUES (%s, %s, %s, %s, %s, %s, current_timestamp)"
+    sql="INSERT INTO METRICS VALUES (default, %s, %s, %s, %s)"
     cursor=connection.cursor()
     for i in data_json.keys():
-        insert_data=(type, i, data_json[i][0], 
-                        data_json[i][1], 
-                        data_json[i][2], 
-                        data_json[i][3])
+        insert_data=(i, type, "ECPU%", data_json[i][0])
+        cursor.execute(sql,insert_data)
+        insert_data=(i, type, "ECPU_TIME", data_json[i][1])
+        cursor.execute(sql,insert_data)
+        insert_data=(i, type, "ZIIP%", data_json[i][2])
+        cursor.execute(sql,insert_data)
+        insert_data=(i, type, "ZIIP_TIME", data_json[i][3])
         cursor.execute(sql,insert_data)
     connection.commit()
     # print(type, data_json)
